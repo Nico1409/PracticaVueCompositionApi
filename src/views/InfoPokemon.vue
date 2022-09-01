@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRoute } from "vue-router";
-import InfoPokemon from "../components/InfoPokemon.vue"
+import DataPokemon from "../components/DataPokemon.vue"
 import BtnBack from '../components/BtnBack.vue';
 import BtnFav from '../components/BtnFav.vue';
 
@@ -10,12 +10,13 @@ const route = useRoute()
 const pokemon = ref([])
 const loading = ref(true)
 
-const getPokemon = async () => {
+async function getPokemon() {
     try {
         const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`)
         pokemon.value = data
         loading.value = false
     } catch (err) {
+        console.log(err)
         pokemon.value = null
         loading.value = false
     }
@@ -41,10 +42,10 @@ getPokemon()
         </div>
 
         <div v-else-if="pokemon" class="flex flex-col items-center">
-            <InfoPokemon :data='pokemon' />
+            <DataPokemon :data='pokemon' />
             <div class="flex flex-row">
                 <BtnBack />
-                <BtnFav :data='pokemon' />
+                <BtnFav :data='pokemon.name' />
             </div>
         </div>
 

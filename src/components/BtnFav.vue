@@ -1,7 +1,12 @@
 <script setup>
 import { useFavoritoStore } from '../store/Favorito';
 
-defineProps(['data'])
+defineProps({
+    data:{
+        type: String,
+        required: true
+    }
+})
 
 const useFavorito = useFavoritoStore()
 const { add, disabledBtn } = useFavorito

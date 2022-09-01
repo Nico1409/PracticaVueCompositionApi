@@ -3,17 +3,22 @@ import { ref } from "vue";
 
 export const useFavoritoStore = defineStore("favorito", () => {
   const favoritos = ref([]);
+  const index = ref(0);
 
-  const add = (id) => {
-    favoritos.value.push(id);
-    console.log(favoritos.value);
-  };
+  function add(name) {
+    favoritos.value.push({
+      value: name,
+      text: name,
+      fecha: "1999-12-05",
+      id: index.value++,
+    });
+  }
 
-  const disabledBtn = (item) => {
-    if (favoritos.value.find((element) => element.id == item.id)) {
+  function disabledBtn(item) {
+    if (favoritos.value.find((element) => element.value == item)) {
       return "true";
     }
-  };
+  }
 
   return {
     favoritos,

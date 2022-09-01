@@ -6,27 +6,27 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => import("../views/HomeView.vue"),
+      component: () => import("../views/Home.vue"),
     },
     {
       path: "/pokemons",
       name: "pokemons",
-      component: () => import("../views/PokemonsView.vue"),
+      component: () => import("../views/ChoosePokemon.vue"),
     },
     {
       path: "/favoritos",
       name: "favoritos",
-      component: () => import("../views/FavView.vue"),
+      component: () => import("../views/Favoritos.vue"),
     },
     {
       path: "/pokemons/:name",
       name: "pokemon",
-      component: () => import("../views/PokeView.vue"),
+      component: () => import("../views/InfoPokemon.vue"),
     },
     {
       path: "/:pathMatch(.*)*",
       name: "NotFound",
-      component: () => import("../views/NotFoundView.vue"),
+      component: () => import("../views/NotFound.vue"),
     },
   ],
 });
